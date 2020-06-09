@@ -9,7 +9,82 @@ const OUTPUT_DIR = path.resolve(__dirname, "output")
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
+//Employee Questions
+const questions = [
+    {
+        type: "input",
+        message: "Enter your name.",
+        name: "name"
+    },
+    {
+        type: "input",
+        message: "Enter employee id #",
+        name: "id"
+    },
+    {
+        type: "input",
+        message: "Enter employee Email.",
+        name: "email"
+    },
+    {
+        type: "list",
+        message: "Select team member role",
+        choices: ["Manager", "Engineer", "Intern"],
+        name: "role"
+    }
+    ];
 
+//Role specific questions
+const managerQuestion = [
+    {
+        type: "input",
+        message: "Enter Manager's office number.",
+        name: "officeNumber"
+    }
+    ];
+
+const engineerQuestion = [
+    {
+        type: "input",
+        message: "Enter Engineer's Github username.",
+        name: "github"
+    }
+    ];
+
+const internQuestion = [
+    {
+        type: "input",
+        message: "Enter Intern's school name.",
+        name: "school"
+    }
+    ];
+
+
+    function init() {
+        inquirer
+            .prompt( questions )
+            .then( ( response ) =>{
+                console.log(response);
+                if(response.role === "Manager"){
+                    inquirer.prompt(managerQuestion).then( ( response ) => {
+                        console.log(response)
+                    })
+                }
+                if (response.role === "Engineer"){
+                    inquirer.prompt(engineerQuestion).then( ( response ) =>{
+                        console.log(response)
+                    })
+                }
+                if (response.role === "Intern"){
+                    inquirer.prompt(internQuestion).then( (response ) =>{
+                        console.log(response)
+                    })
+                }
+            })   
+    };
+
+   
+init()
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 // After the user has input all employees desired, call the `render` function (required
