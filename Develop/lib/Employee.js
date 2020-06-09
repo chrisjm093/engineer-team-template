@@ -12,6 +12,10 @@ class Employee{
     getId(id){
         return this.id
     }
+     
+    getEmail(email){
+        return this.email
+    }
 
 
 }
