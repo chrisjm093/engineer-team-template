@@ -1,4 +1,4 @@
-.jumbotron {
+.team-heading {
     background-color: #97BE6F;
     border-bottom: 2px, #918A76;
 }
@@ -8,6 +8,6 @@
 
 }
 
-.card-body{
-    background-color: 
+body{
+    background-color: #CFCFA8;
 }
